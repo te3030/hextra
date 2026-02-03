@@ -1,4 +1,6 @@
-{{ $isAI := or .Params.AI .Params.AI_model_name "true" }}
+
+{{ $isAIModel := .Params.AI_model_name | default "" }}
+{{ $isAI := or .Params.AI (gt (len $isAIModel) 0) }}
 
 {{ if $isAI }}
 <div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-green-200 hx:bg-green-100 hx:text-green-900 hx:dark:border-green-200/30 hx:dark:bg-green-900/30 hx:dark:text-green-200">
